@@ -1,8 +1,13 @@
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
+import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
+import { Pie } from "react-chartjs-2";
 import LoadingSpinner from "../components/LoadingSpinner.tsx";
 import StatItem from "../components/StatItem.tsx";
+import Footer from "../components/Footer.tsx";
 import { GET_CHANNELS } from "../queries/channels";
+
+ChartJS.register(ArcElement, Tooltip);
 
 const Channels = () => {
   const router = useRouter();
@@ -15,8 +20,6 @@ const Channels = () => {
       order: { by: "capacity", direction: "DESC" },
     },
   });
-
-  console.log(data);
 
   const channels =
     (data && data.getNode["graph_info"].channels["channel_list"].list) || [];
@@ -65,6 +68,21 @@ const Channels = () => {
     { title: "Last Update", stat: lastUpdated },
   ];
 
+  const pieChartData = {
+    labels: channels.map(({ short_channel_id }) => short_channel_id),
+    datasets: [
+      {
+        label: "Capacity",
+        data: channels.map(({ capacity }) => capacity),
+        backgroundColor: channels.map(
+          () => `rgba(255, 0, 128, ${Math.random()})`
+        ),
+        borderColor: "rgba(255, 0, 128, 1)",
+        borderWidth: 1,
+      },
+    ],
+  };
+
   if (loading)
     return (
       <main className="w-full text-center p-8">
@@ -77,32 +95,130 @@ const Channels = () => {
     );
   if (error)
     return (
-      <main className="w-full text-center p-8">
-        <p className="text-white font-semibold text-3xl">
-          Error : {error.message}
-        </p>
-      </main>
+      <>
+        <main className="w-full text-center p-8">
+          <p className="text-white font-semibold text-3xl">
+            Error : {error.message}
+          </p>
+        </main>
+        <Footer />
+      </>
     );
 
   if (!channels.length)
     return (
-      <main className="w-full text-center p-8">
-        <p className="text-white font-semibold text-3xl">
-          No channels to display.
-        </p>
-      </main>
+      <>
+        <main className="w-full text-center p-8">
+          <p className="text-white font-semibold text-3xl">
+            No channels to display.
+          </p>
+        </main>
+        <Footer />
+      </>
     );
 
   return (
-    <main>
-      <div className="flex justify-center text-white p-8">
-        <section className="space-y-2">
-          {statItems.map((stat) => (
-            <StatItem key={stat.title} title={stat.title} stat={stat.stat} />
-          ))}
+    <>
+      <div className="space-y-8 text-white p-8">
+        <section className="flex justify-center">
+          <div className="space-y-2">
+            <p className="text-3xl font-semibold text-center mb-4">
+              Channel Stats
+            </p>
+            {statItems.map((stat) => (
+              <StatItem key={stat.title} title={stat.title} stat={stat.stat} />
+            ))}
+          </div>
+        </section>
+
+        <section className="w-full md:w-[500px] mx-auto">
+          <p className="text-3xl font-semibold text-center mb-4">
+            Channel Capacity
+          </p>
+          <Pie data={pieChartData} />
+        </section>
+
+        <section>
+          <p className="text-3xl font-semibold text-center mb-4">Channels</p>
+          <div className="bg-white/[0.05] text-white rounded-lg p-8 w-[80vw] mx-auto overflow-auto">
+            <table className="w-full">
+              <thead className="text-left font-semibold">
+                <tr>
+                  <th className="min-w-[35px]"></th>
+                  <th className="min-w-[225px]">Peer</th>
+                  <th className="min-w-[175px]">Id</th>
+                  <th className="min-w-[150px]">
+                    Capacity{" "}
+                    <span className="text-pink font-normal">(sats)</span>
+                  </th>
+                  <th className="min-w-[125px]">Block Age</th>
+                  <th className="min-w-[100px]">Last Update</th>
+                </tr>
+              </thead>
+              <tbody>
+                {channels.map((channel) => (
+                  <tr
+                    key={channel["short_channel_id"]}
+                    className="border-t-[1px] border-b-[1px] border-white/10"
+                  >
+                    <td className="text-secondary">
+                      {channels.indexOf(channel) + 1}
+                    </td>
+
+                    <td>
+                      <p
+                        className={`font-semibold ${
+                          channel["node2_info"].node.alias.match("([^ ]{21})")
+                            ? "break-all"
+                            : ""
+                        }`}
+                      >
+                        {channel["node2_info"].node.alias}
+                      </p>
+                      <a
+                        href={`/${channel["node2_pub"]}`}
+                        className="text-link hover:text-pink text-xs"
+                      >
+                        {channel["node2_pub"].slice(0, 6) +
+                          "..." +
+                          channel["node2_pub"].slice(
+                            channel["node2_pub"].length - 6,
+                            channel["node2_pub"].length
+                          )}
+                      </a>
+                    </td>
+
+                    <td>
+                      <p>{channel["short_channel_id"]}</p>
+                      <p className="text-secondary text-xs">
+                        {channel["long_channel_id"]}
+                      </p>
+                    </td>
+
+                    <td>
+                      {new Intl.NumberFormat("en-US").format(channel.capacity)}
+                    </td>
+
+                    <td>
+                      {new Intl.NumberFormat("en-US").format(
+                        channel["block_age"]
+                      )}
+                    </td>
+
+                    <td>
+                      {new Date(
+                        channel["last_update"] * 1000
+                      ).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       </div>
-    </main>
+      <Footer />
+    </>
   );
 };
 
