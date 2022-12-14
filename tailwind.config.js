@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         link: "#A6B0C3FF",
-        hover: "#FF0080",
+        pink: "#FF0080",
         secondary: "#FFFFFFB3",
       },
     },
