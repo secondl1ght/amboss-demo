@@ -1,11 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  gql,
-} from "@apollo/client";
+import Head from "next/head";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "https://api.amboss.space/graphql",
@@ -14,8 +10,16 @@ const client = new ApolloClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ApolloProvider client={client}>
-      <Component {...pageProps} />
-    </ApolloProvider>
+    <>
+      <Head>
+        <title>Amboss Demo</title>
+        <meta name="description" content="Amboss Demo - Channels API" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    </>
   );
 }
