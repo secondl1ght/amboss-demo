@@ -8,21 +8,16 @@ export default function Home() {
 
         <p className="bg-white/[0.03] rounded-lg p-8">
           Trying out the{" "}
-          <a
-            href="https://amboss.space/"
-            className="text-link hover:text-hover"
-          >
+          <a href="https://amboss.space/" className="text-link hover:text-pink">
             AMBOSS.SPACE
           </a>{" "}
           API!
-
           <br />
           <br />
-
           Use the following URL format to view node channel information:{" "}
           <code className="break-all md:break-normal">
             https://ambossdemo.space/
-            <span className="text-hover">[pubkey]</span>
+            <span className="text-pink">[pubkey]</span>
           </code>
         </p>
       </div>

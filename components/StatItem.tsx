@@ -15,13 +15,10 @@ export default function StatItem({ title, stat }) {
       <p className="text-xl text-secondary">{title}</p>
 
       <p className="text-3xl font-semibold">
-
         {pubkeyShortened ? pubkeyShortened : stat}{" "}
-
         {satUnits.includes(title) && (
-          <span className="text-hover text-xl">sats</span>
+          <span className="text-pink text-xl">sats</span>
         )}
-
         {title === "Pubkey" && <CopyButton content={stat} />}
       </p>
     </div>
