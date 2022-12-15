@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-export default function CopyButton({ content }) {
+interface CopyButtonTypes {
+  content: string;
+}
+
+export default function CopyButton({ content }: CopyButtonTypes) {
   const [copied, setCopied] = useState(false);
   const copy = () => {
     navigator.clipboard.writeText(content);

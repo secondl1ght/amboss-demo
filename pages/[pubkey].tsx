@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import LoadingSpinner from "../components/LoadingSpinner.tsx";
-import StatItem from "../components/StatItem.tsx";
-import Footer from "../components/Footer.tsx";
+import LoadingSpinner from "../components/LoadingSpinner";
+import StatItem from "../components/StatItem";
+import Footer from "../components/Footer";
 import { GET_CHANNELS } from "../queries/channels";
 
 ChartJS.register(ArcElement, Tooltip);
@@ -27,10 +27,10 @@ const Channels = () => {
   const numChannels = new Intl.NumberFormat("en-US").format(channels.length);
 
   let totalCapacity = 0;
-  let channelCapacaties = [];
-  let lastUpdates = [];
+  let channelCapacaties: Array<number> = [];
+  let lastUpdates: Array<number> = [];
 
-  channels.forEach((channel) => {
+  channels.forEach((channel: any) => {
     const capacity = parseInt(channel.capacity);
 
     // calculate sum of channel capacity
@@ -68,12 +68,19 @@ const Channels = () => {
     { title: "Last Update", stat: lastUpdated },
   ];
 
+  interface PieChartTypes {
+    short_channel_id: string;
+    capacity: string;
+  }
+
   const pieChartData = {
-    labels: channels.map(({ short_channel_id }) => short_channel_id),
+    labels: channels.map(
+      ({ short_channel_id }: PieChartTypes) => short_channel_id
+    ),
     datasets: [
       {
         label: "Capacity",
-        data: channels.map(({ capacity }) => capacity),
+        data: channels.map(({ capacity }: PieChartTypes) => capacity),
         backgroundColor: channels.map(
           () => `rgba(255, 0, 128, ${Math.random()})`
         ),
@@ -156,7 +163,7 @@ const Channels = () => {
                 </tr>
               </thead>
               <tbody>
-                {channels.map((channel) => (
+                {channels.map((channel: any) => (
                   <tr
                     key={channel["short_channel_id"]}
                     className="border-t-[1px] border-b-[1px] border-white/10"

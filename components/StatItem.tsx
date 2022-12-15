@@ -1,9 +1,14 @@
-import CopyButton from "./CopyButton.tsx";
+import CopyButton from "./CopyButton";
 
-export default function StatItem({ title, stat }) {
+interface StatItemTypes {
+  title: string;
+  stat: any;
+}
+
+export default function StatItem({ title, stat }: StatItemTypes) {
   const satUnits = ["Total Capacity", "Biggest Channel", "Smallest Channel"];
 
-  let pubkeyShortened;
+  let pubkeyShortened = "";
 
   if (title === "Pubkey") {
     pubkeyShortened =
