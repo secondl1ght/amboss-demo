@@ -38,7 +38,7 @@ export default function Home() {
             </code>
           </p>
 
-          <p className="text-secondary font-semibold">OR</p>
+          <p className="font-semibold">OR</p>
 
           <input
             onInput={(e) => handleInput(e)}
