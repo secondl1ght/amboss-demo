@@ -185,7 +185,6 @@ const Channels = () => {
                       className="border-t-[1px] border-b-[1px] border-white/10"
                     >
                       <td className="text-secondary">{rank}</td>
-
                       <td>
                         <p
                           className={`font-semibold ${
@@ -203,16 +202,12 @@ const Channels = () => {
                             peerPub.slice(peerPub.length - 6, peerPub.length)}
                         </a>
                       </td>
-
                       <td>
                         <p>{idShort}</p>
                         <p className="text-secondary text-xs">{idLong}</p>
                       </td>
-
                       <td>{capacity}</td>
-
                       <td>{blockAge}</td>
-
                       <td>{lastUpdate}</td>
                     </tr>
                   );

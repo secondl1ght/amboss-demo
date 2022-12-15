@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Home() {
   const [pubkey, setPubkey] = useState("");
 
-  const handleInput = (e:any) => {
+  const handleInput = (e: any) => {
     setPubkey(e.target.value);
   };
 
