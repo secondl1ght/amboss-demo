@@ -54,7 +54,7 @@ export default function Home() {
           <a
             href={`/${pubkey}`}
             className={`${
-              pubkey ? "" : "pointer-events-none"
+              pubkey ? "" : "pointer-events-none opacity-50"
             } gradient flex justify-center items-center bg-black text-sm text-white font-semibold h-[42px] p-1 rounded-lg`}
           >
             Explore Channels
