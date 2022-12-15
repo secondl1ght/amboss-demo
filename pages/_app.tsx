@@ -27,7 +27,6 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta property="twitter:site" content="@secondl1ght" />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="lightning" content="lnurlp:secondl1ght@getalby.com" />
         <meta property="alby:image" content="/images/secondl1ght.png" />
