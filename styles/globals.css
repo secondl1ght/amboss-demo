@@ -20,3 +20,14 @@ main {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
+
+.gradient {
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(black, black),
+    linear-gradient(120deg, rgb(121, 40, 202) 0%, rgb(255, 0, 128) 100%);
+}
+
+.gradient:hover {
+  background-image: linear-gradient(black, black),
+    linear-gradient(240deg, rgb(121, 40, 202) 0%, rgb(255, 0, 128) 100%);
+}

@@ -10,6 +10,7 @@ module.exports = {
         link: "#A6B0C3FF",
         pink: "#FF0080",
         secondary: "#FFFFFFB3",
+        input: "#EFF2F5FF",
       },
     },
   },
