@@ -147,7 +147,7 @@ const Channels = () => {
 
         <section>
           <p className="text-3xl font-semibold text-center mb-4">Channels</p>
-          <div className="bg-white/[0.05] text-white rounded-lg p-8 w-[80vw] mx-auto overflow-auto">
+          <div className="bg-white/[0.05] text-white rounded-lg p-8 w-[80vw] max-h-[1000px] mx-auto overflow-auto">
             <table className="w-full">
               <thead className="text-left font-semibold">
                 <tr>
@@ -165,7 +165,11 @@ const Channels = () => {
               <tbody>
                 {channels.map((channel: any) => {
                   let rank = channels.indexOf(channel) + 1;
-                  let peerAlias = channel["node2_info"].node.alias;
+                  let peerAlias =
+                    channel["node2_info"].node &&
+                    channel["node2_info"].node.alias
+                      ? channel["node2_info"].node.alias
+                      : "Satoshi";
                   let peerPub = channel["node2_pub"];
                   let idShort = channel["short_channel_id"];
                   let idLong = channel["long_channel_id"];
