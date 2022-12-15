@@ -31,9 +31,15 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="lightning" content="lnurlp:secondl1ght@getalby.com" />
         <meta property="alby:image" content="/images/secondl1ght.png" />
         <meta property="alby:name" content="Amboss Demo - secondl1ght" />
-        <meta property="og:image" content="" />
+        <meta
+          property="og:image"
+          content="https://amboss-demo.vercel.app/images/amboss.svg"
+        />
         <meta property="twitter:title" content="Amboss Demo" />
-        <meta property="twitter:image" content="" />
+        <meta
+          property="twitter:image"
+          content="https://amboss-demo.vercel.app/images/amboss.svg"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

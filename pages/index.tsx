@@ -33,7 +33,7 @@ export default function Home() {
           <p>
             Use the following URL format to view node channel information:{" "}
             <code className="break-all md:break-normal">
-              https://ambossdemo.space/
+              https://amboss-demo.vercel.app/
               <span className="text-pink">[pubkey]</span>
             </code>
           </p>
