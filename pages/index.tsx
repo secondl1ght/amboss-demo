@@ -12,7 +12,9 @@ export default function Home() {
       <div className="text-white text-center space-y-2 w-full md:w-[400px] mx-auto">
         <img src="/images/amboss.svg" alt="Amboss" className="w-full" />
 
-        <h1 className="text-3xl font-semibold uppercase">DEMO</h1>
+        <h1 className="text-3xl font-semibold">
+          DEMO <p className="text-secondary text-base">Channel Explorer</p>
+        </h1>
 
         <div className="bg-white/[0.03] rounded-lg p-4 md:p-8 space-y-2">
           <p>

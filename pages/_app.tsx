@@ -12,8 +12,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Amboss Demo</title>
-        <meta name="description" content="Amboss Demo - Channels API" />
+        <title>Amboss Demo - Channel Explorer</title>
+        <meta
+          name="description"
+          content="Explore lightning network nodes and channels."
+        />
         <meta name="theme-color" content="#FF0080" />
         <meta
           name="keywords"
@@ -23,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:type" content="website" />
         <meta
           property="twitter:description"
-          content="Amboss Demo - Channels API"
+          content="Explore lightning network nodes and channels."
         />
         <meta property="twitter:site" content="@secondl1ght" />
         <meta property="twitter:card" content="summary_large_image" />
@@ -35,7 +38,10 @@ export default function App({ Component, pageProps }: AppProps) {
           property="og:image"
           content="https://amboss-demo.vercel.app/images/amboss.svg"
         />
-        <meta property="twitter:title" content="Amboss Demo" />
+        <meta
+          property="twitter:title"
+          content="Amboss Demo - Channel Explorer"
+        />
         <meta
           property="twitter:image"
           content="https://amboss-demo.vercel.app/images/amboss.svg"

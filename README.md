@@ -1,4 +1,4 @@
-# Amboss Demo
+# Amboss Demo - Channel Explorer
 
 Trying out the [Amboss](https://amboss.space/) API using the `getNode` endpoint.
 
