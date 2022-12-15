@@ -1,10 +1,18 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [pubkey, setPubkey] = useState("");
+  const router = useRouter();
 
   const handleInput = (e: any) => {
     setPubkey(e.target.value);
+  };
+
+  const handleEnter = (e: any) => {
+    if (e.key === "Enter" && pubkey) {
+      router.push(`/${pubkey}`);
+    }
   };
 
   return (
@@ -44,6 +52,7 @@ export default function Home() {
 
           <input
             onInput={(e) => handleInput(e)}
+            onKeyDown={(e) => handleEnter(e)}
             placeholder="Enter a pubkey..."
             type="text"
             id="pubkey"
