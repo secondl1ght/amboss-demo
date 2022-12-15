@@ -163,62 +163,60 @@ const Channels = () => {
                 </tr>
               </thead>
               <tbody>
-                {channels.map((channel: any) => (
-                  <tr
-                    key={channel["short_channel_id"]}
-                    className="border-t-[1px] border-b-[1px] border-white/10"
-                  >
-                    <td className="text-secondary">
-                      {channels.indexOf(channel) + 1}
-                    </td>
+                {channels.map((channel: any) => {
+                  let rank = channels.indexOf(channel) + 1;
+                  let peerAlias = channel["node2_info"].node.alias;
+                  let peerPub = channel["node2_pub"];
+                  let idShort = channel["short_channel_id"];
+                  let idLong = channel["long_channel_id"];
+                  let capacity = new Intl.NumberFormat("en-US").format(
+                    channel.capacity
+                  );
+                  let blockAge = new Intl.NumberFormat("en-US").format(
+                    channel["block_age"]
+                  );
+                  let lastUpdate = new Date(
+                    channel["last_update"] * 1000
+                  ).toLocaleDateString();
 
-                    <td>
-                      <p
-                        className={`font-semibold ${
-                          channel["node2_info"].node.alias.match("([^ ]{21})")
-                            ? "break-all"
-                            : ""
-                        }`}
-                      >
-                        {channel["node2_info"].node.alias}
-                      </p>
-                      <a
-                        href={`/${channel["node2_pub"]}`}
-                        className="text-link hover:text-pink text-xs"
-                      >
-                        {channel["node2_pub"].slice(0, 6) +
-                          "..." +
-                          channel["node2_pub"].slice(
-                            channel["node2_pub"].length - 6,
-                            channel["node2_pub"].length
-                          )}
-                      </a>
-                    </td>
+                  return (
+                    <tr
+                      key={idShort}
+                      className="border-t-[1px] border-b-[1px] border-white/10"
+                    >
+                      <td className="text-secondary">{rank}</td>
 
-                    <td>
-                      <p>{channel["short_channel_id"]}</p>
-                      <p className="text-secondary text-xs">
-                        {channel["long_channel_id"]}
-                      </p>
-                    </td>
+                      <td>
+                        <p
+                          className={`font-semibold ${
+                            peerAlias.match("([^ ]{21})") ? "break-all" : ""
+                          }`}
+                        >
+                          {peerAlias}
+                        </p>
+                        <a
+                          href={`/${peerPub}`}
+                          className="text-link hover:text-pink text-xs"
+                        >
+                          {peerPub.slice(0, 6) +
+                            "..." +
+                            peerPub.slice(peerPub.length - 6, peerPub.length)}
+                        </a>
+                      </td>
 
-                    <td>
-                      {new Intl.NumberFormat("en-US").format(channel.capacity)}
-                    </td>
+                      <td>
+                        <p>{idShort}</p>
+                        <p className="text-secondary text-xs">{idLong}</p>
+                      </td>
 
-                    <td>
-                      {new Intl.NumberFormat("en-US").format(
-                        channel["block_age"]
-                      )}
-                    </td>
+                      <td>{capacity}</td>
 
-                    <td>
-                      {new Date(
-                        channel["last_update"] * 1000
-                      ).toLocaleDateString()}
-                    </td>
-                  </tr>
-                ))}
+                      <td>{blockAge}</td>
+
+                      <td>{lastUpdate}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
