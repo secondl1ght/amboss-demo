@@ -148,7 +148,7 @@ const Channels = () => {
 
         <section>
           <p className="text-3xl font-semibold text-center mb-4">Channels</p>
-          <div className="bg-white/[0.05] text-white rounded-lg p-8 w-[80vw] max-h-[1000px] mx-auto overflow-auto">
+          <div className="bg-white/[0.05] text-white rounded-lg p-8 w-[80vw] max-h-[80vh] mx-auto overflow-auto">
             <table className="w-full">
               <thead className="text-left font-semibold">
                 <tr>
