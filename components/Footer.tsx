@@ -7,6 +7,8 @@ export default function Footer() {
       <span className="text-secondary">|</span>
       <a
         href="https://github.com/secondl1ght/amboss-demo"
+        target="_blank"
+        rel="noreferrer"
         className="text-link hover:text-pink ml-2"
       >
         Code
