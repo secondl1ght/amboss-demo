@@ -1,4 +1,5 @@
 import CopyButton from "./CopyButton";
+import { shortenPubkey } from "../utils/utils";
 
 interface StatItemTypes {
   title: string;
@@ -11,8 +12,7 @@ export default function StatItem({ title, stat }: StatItemTypes) {
   let pubkeyShortened = "";
 
   if (title === "Pubkey") {
-    pubkeyShortened =
-      stat.slice(0, 6) + "..." + stat.slice(stat.length - 6, stat.length);
+    pubkeyShortened = shortenPubkey(stat);
   }
 
   return (

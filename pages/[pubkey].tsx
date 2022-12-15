@@ -6,6 +6,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import StatItem from "../components/StatItem";
 import Footer from "../components/Footer";
 import { GET_CHANNELS } from "../queries/channels";
+import { shortenPubkey } from "../utils/utils";
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -201,9 +202,7 @@ const Channels = () => {
                           href={`/${peerPub}`}
                           className="text-link hover:text-pink text-xs"
                         >
-                          {peerPub.slice(0, 6) +
-                            "..." +
-                            peerPub.slice(peerPub.length - 6, peerPub.length)}
+                          {shortenPubkey(peerPub)}
                         </a>
                       </td>
                       <td>
