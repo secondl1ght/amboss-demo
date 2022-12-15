@@ -20,3 +20,13 @@ You can view a node's channel information in tabular and graphical formats by en
 ## Amboss API
 
 [API Docs](https://docs.amboss.space/api/introduction)
+
+## Running Locally
+
+1. `git clone` the repo and `cd` into the directory
+2. run `yarn` to install the packages
+3. `yarn dev` will open the app on `localhost:3000`
+
+### Additional Scripts
+
+`yarn format` will run prettier
