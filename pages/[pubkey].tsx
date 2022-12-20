@@ -101,6 +101,7 @@ const Channels = () => {
         </p>
       </main>
     );
+
   if (error)
     return (
       <>
