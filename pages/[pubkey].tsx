@@ -93,7 +93,7 @@ const Channels = () => {
 
   if (loading)
     return (
-      <main className="w-full text-center p-8">
+      <main className="center w-full text-center p-8">
         <p className="text-white font-semibold text-3xl">
           L
           <LoadingSpinner />
@@ -105,7 +105,7 @@ const Channels = () => {
   if (error)
     return (
       <>
-        <main className="w-full text-center p-8">
+        <main className="center w-full text-center p-8">
           <p className="text-white font-semibold text-3xl">
             Error : {error.message}
           </p>
@@ -117,7 +117,7 @@ const Channels = () => {
   if (!channels.length)
     return (
       <>
-        <main className="w-full text-center p-8">
+        <main className="center w-full text-center p-8">
           <p className="text-white font-semibold text-3xl">
             No channels to display.
           </p>
@@ -128,7 +128,7 @@ const Channels = () => {
 
   return (
     <>
-      <div className="space-y-8 text-white p-8">
+      <main className="space-y-8 text-white p-8">
         <section className="flex justify-center">
           <div className="space-y-2">
             <p className="text-3xl font-semibold text-center mb-4">
@@ -176,7 +176,7 @@ const Channels = () => {
             </table>
           </div>
         </section>
-      </div>
+      </main>
       <Footer />
     </>
   );

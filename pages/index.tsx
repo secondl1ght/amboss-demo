@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full p-4 md:p-8">
+    <main className="center w-full p-4 md:p-8">
       <div className="text-white text-center space-y-2 w-full md:w-[400px] mx-auto">
         <img src="/images/amboss.svg" alt="Amboss" className="w-full" />
 
