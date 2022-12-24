@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import ambossLogo from "../public/images/amboss.svg";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -19,7 +21,7 @@ export default function Home() {
   return (
     <main className="center w-full p-4 md:p-8">
       <div className="text-white text-center space-y-2 w-full md:w-[400px] mx-auto">
-        <img src="/images/amboss.svg" alt="Amboss" className="w-full" />
+        <Image src={ambossLogo} alt="Amboss" className="w-full" priority />
 
         <h1 className="text-3xl font-semibold">
           DEMO <p className="text-secondary text-base">Channel Explorer</p>
