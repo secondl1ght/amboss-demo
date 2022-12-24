@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="alby:name" content="Amboss Demo - secondl1ght" />
         <meta
           property="og:image"
-          content="https://amboss-demo.vercel.app/images/amboss.svg"
+          content="https://amboss-demo.vercel.app/images/opengraph.png"
         />
         <meta
           property="twitter:title"
@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           property="twitter:image"
-          content="https://amboss-demo.vercel.app/images/amboss.svg"
+          content="https://amboss-demo.vercel.app/images/opengraph.png"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
