@@ -1,4 +1,5 @@
 import { shortenPubkey } from "../utils/utils";
+import Link from "next/link";
 
 interface ChannelRowTypes {
   rank: number;
@@ -28,9 +29,12 @@ export default function ChannelRow({ rank, channel }: ChannelRowTypes) {
         >
           {peerAlias}
         </p>
-        <a href={`/${peerPub}`} className="text-link hover:text-pink text-xs">
+        <Link
+          href={`/${peerPub}`}
+          className="text-link hover:text-pink text-xs"
+        >
           {shortenPubkey(peerPub)}
-        </a>
+        </Link>
       </td>
       <td>
         <p>{idShort}</p>

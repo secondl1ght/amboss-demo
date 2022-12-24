@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -60,14 +61,14 @@ export default function Home() {
             className="w-full placeholder:text-center rounded-lg px-4 py-2 bg-input/5 border-[1px] border-input/10 hover:border-pink focus:shadow-[0px_0px_5px_rgb(255,0,128)] focus:border-pink focus:outline-none transition-colors"
           />
 
-          <a
+          <Link
             href={`/${pubkey}`}
             className={`${
               pubkey ? "" : "pointer-events-none opacity-50"
             } gradient flex justify-center items-center bg-black text-sm text-white font-semibold h-[42px] p-1 rounded-lg`}
           >
             Explore Channels
-          </a>
+          </Link>
         </div>
       </div>
     </main>

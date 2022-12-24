@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="py-8 flex justify-center items-center">
-      <a href="/" className="text-link hover:text-pink mr-2">
+      <Link href="/" className="text-link hover:text-pink mr-2">
         Home
-      </a>
+      </Link>
       <span className="text-secondary">|</span>
       <a
         href="https://github.com/secondl1ght/amboss-demo"
