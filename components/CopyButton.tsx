@@ -6,6 +6,7 @@ interface CopyButtonTypes {
 
 export default function CopyButton({ content }: CopyButtonTypes) {
   const [copied, setCopied] = useState(false);
+
   const copy = () => {
     navigator.clipboard.writeText(content);
     setCopied(true);
