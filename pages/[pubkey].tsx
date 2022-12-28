@@ -28,7 +28,7 @@ const Channels = () => {
   const numChannels = new Intl.NumberFormat("en-US").format(channels.length);
 
   let totalCapacity = 0;
-  let channelCapacaties: Array<number> = [];
+  let channelCapacities: Array<number> = [];
   let lastUpdates: Array<number> = [];
 
   channels.forEach((channel: any) => {
@@ -38,17 +38,17 @@ const Channels = () => {
     totalCapacity = totalCapacity + capacity;
 
     // create array of capacities to calculate min/max
-    channelCapacaties.push(capacity);
+    channelCapacities.push(capacity);
 
     // push last updates to array to determine latest
     lastUpdates.push(channel["last_update"]);
   });
 
   const biggestChannel = new Intl.NumberFormat("en-US").format(
-    Math.max(...channelCapacaties)
+    Math.max(...channelCapacities)
   );
   const smallestChannel = new Intl.NumberFormat("en-US").format(
-    Math.min(...channelCapacaties)
+    Math.min(...channelCapacities)
   );
   const lastUpdated = new Date(
     Math.max(...lastUpdates) * 1000
