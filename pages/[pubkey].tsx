@@ -16,8 +16,8 @@ const Channels = () => {
 
   const { loading, error, data } = useQuery(GET_CHANNELS, {
     variables: {
-      pubkey: pubkey,
-      page: { limit: 0, offset: 0 },
+      pubkey,
+      page: { limit: 50, offset: 0 },
       order: { by: "capacity", direction: "DESC" },
     },
   });
